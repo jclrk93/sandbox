@@ -1,0 +1,37 @@
+# Pre-commit hooks, run by prek (https://github.com/j178/prek).
+# Install the git hook with `prek install`; run manually with `prek run --all-files`.
+
+[[repos]]
+repo = "builtin"
+
+[[repos.hooks]]
+id = "trailing-whitespace"
+
+[[repos.hooks]]
+id = "end-of-file-fixer"
+
+[[repos.hooks]]
+id = "mixed-line-ending"
+args = ["--fix=lf"]
+
+[[repos.hooks]]
+id = "check-toml"
+
+[[repos]]
+repo = "local"
+
+[[repos.hooks]]
+id = "taplo-fmt"
+name = "taplo fmt"
+language = "node"
+additional_dependencies = ["@taplo/cli@0.7.0"]
+entry = "taplo fmt"
+types = ["toml"]
+
+[[repos.hooks]]
+id = "markdownlint"
+name = "markdownlint"
+language = "node"
+additional_dependencies = ["markdownlint-cli2@0.23.3"]
+entry = "markdownlint-cli2 --fix"
+types = ["markdown"]
